@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>팀 결과</title>
+</head>
+<body>
+    <h1>팀 구성 결과</h1>
+    {% for i, team in enumerate(teams) %}
+        <h2>Team {{ i+1 }} ({{ team|length }}명)</h2>
+        <ul>
+        {% for person in team %}
+            <li>{{ person }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+    <a href="/">← 다시 입력하기</a>
+</body>
+</html>

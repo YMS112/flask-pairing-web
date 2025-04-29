@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>짝짓기 입력 폼</title>
+</head>
+<body>
+    <h1>사람 정보 입력</h1>
+    <form method="POST">
+        <div id="form-container">
+            <div class="person-block">
+                이름: <input name="name"><br>
+                성별:
+                <select name="gender">
+                    <option value="male">남자</option>
+                    <option value="female">여자</option>
+                </select><br>
+                나이대:
+                <select name="age_group">
+                    <option value="young">젊은</option>
+                    <option value="old">나이든</option>
+                </select><br>
+                차량 있음?
+                <select name="has_car">
+                    <option value="yes">있음</option>
+                    <option value="no">없음</option>
+                </select><br><br>
+            </div>
+        </div>
+        <button type="button" onclick="addPerson()">사람 추가</button><br><br>
+        <input type="submit" value="팀 만들기">
+    </form>
+
+    <script>
+        function addPerson() {
+            const container = document.getElementById('form-container');
+            const copy = container.children[0].cloneNode(true);
+            container.appendChild(copy);
+        }
+    </script>
+</body>
+</html>
