@@ -1,0 +1,98 @@
+[
+    {
+        "name": "\uc784\uc7ac\ud654",
+        "gender": "female",
+        "age": "old",
+        "car": false
+    },
+    {
+        "name": "\uc9c0\uc7ac\ub9cc",
+        "gender": "male",
+        "age": "old",
+        "car": true
+    },
+    {
+        "name": "\uae40\uc724\uae38",
+        "gender": "male",
+        "age": "old",
+        "car": true
+    },
+    {
+        "name": "\ubc15\ubbfc\uc131",
+        "gender": "male",
+        "age": "young",
+        "car": false
+    },
+    {
+        "name": "\ucd5c\ubb38\uc218",
+        "gender": "male",
+        "age": "old",
+        "car": false
+    },
+    {
+        "name": "\uc2e0\ud0dc\uc6a9",
+        "gender": "male",
+        "age": "old",
+        "car": true
+    },
+    {
+        "name": "\uae40\uc608\uc9c0",
+        "gender": "female",
+        "age": "young",
+        "car": false
+    },
+    {
+        "name": "\uc9c4\uac11\uc120",
+        "gender": "female",
+        "age": "old",
+        "car": false
+    },
+    {
+        "name": "\uae40\uc1a1\ub09c",
+        "gender": "female",
+        "age": "old",
+        "car": false
+    },
+    {
+        "name": "\uc591\ubbfc\uc218",
+        "gender": "male",
+        "age": "young",
+        "car": false
+    },
+    {
+        "name": "\uae40\ud61c\uc219",
+        "gender": "female",
+        "age": "old",
+        "car": false
+    },
+    {
+        "name": "\uc9c0\uc0c1\ubbf8",
+        "gender": "female",
+        "age": "young",
+        "car": true
+    },
+    {
+        "name": "\uc774\ud6a8\uc219",
+        "gender": "female",
+        "age": "old",
+        "car": true
+    },
+    {
+        "name": "\uc1a1\uc21c\ub140",
+        "gender": "female",
+        "age": "old",
+        "car": false
+    },
+    {
+        "name": "\uc1a1\uc601\uc21c",
+        "gender": "female",
+        "age": "old",
+        "car": false
+    },
+    {
+        "name": "\uc774\uc21c\uc784",
+        "gender": "female",
+        "age": "young",
+        "car": true
+    }
+]

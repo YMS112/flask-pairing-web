@@ -1,81 +1,90 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import random
+import json
+import os
 
 app = Flask(__name__)
 
-class Person:
-    def __init__(self, name, gender, age_group, has_car):
-        self.name = name
-        self.gender = gender
-        self.age_group = age_group  # 'young' or 'old'
-        self.has_car = has_car      # True or False
+data_file = 'people.json'
 
-    def __repr__(self):
-        return f"{self.name} ({self.gender}, {self.age_group}, {'car' if self.has_car else 'no car'})"
+# JSON 파일 저장/불러오기
+def load_data():
+    if os.path.exists(data_file):
+        with open(data_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return []
 
-def group_and_pair(people):
-    young = [p for p in people if p.age_group == 'young']
-    old = [p for p in people if p.age_group == 'old']
-    random.shuffle(young)
-    random.shuffle(old)
-    pairs = []
-    while young and old:
-        pairs.append((young.pop(), old.pop()))
-    remaining = young + old
-    while len(remaining) >= 2:
-        pairs.append((remaining.pop(), remaining.pop()))
-    if remaining:
-        pairs.append((remaining[0],))  # 1명 남을 경우
-    return pairs
+def save_data(data):
+    with open(data_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
-def assign_teams(male_pairs, female_pairs):
-    all_pairs = male_pairs + female_pairs
-    random.shuffle(all_pairs)
+# 팀 구성 함수 (최대 5명까지 허용)
+def make_pairs(group):
+    random.shuffle(group)
     teams = []
-    team = []
-
-    for pair in all_pairs:
-        team.extend(pair)
-        if len(team) == 6:
-            if len(all_pairs) == 1 and len(pair) == 1:
-                continue
-            teams.append(team)
-            team = []
-    if team:
+    while len(group) >= 4:
+        team = []
+        while len(team) < 4 and group:
+            team.append(group.pop())
         teams.append(team)
+    if group:
+        if teams and len(teams[-1]) + len(group) <= 5:
+            teams[-1].extend(group)
+        else:
+            teams.append(group)
     return teams
 
-def ensure_car_owners(teams):
-    for team in teams:
-        car_owners = [p for p in team if p.has_car]
-        if len(car_owners) < 1:
-            for person in team:
-                person.has_car = True
-                break
-    return teams
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
+    people = load_data()
+    return render_template('form.html', people=people)
+
+@app.route('/add', methods=['POST'])
+def add():
+    people = load_data()
+    new_person = {
+        'name': request.form['name'],
+        'gender': request.form['gender'],
+        'age': request.form['age'],
+        'car': 'car' in request.form
+    }
+    people.append(new_person)
+    save_data(people)
+    return redirect(url_for('index'))
+
+@app.route('/delete/<name>', methods=['POST'])
+def delete(name):
+    people = load_data()
+    people = [p for p in people if p['name'] != name]
+    save_data(people)
+    return redirect(url_for('index'))
+
+@app.route('/edit/<name>', methods=['GET', 'POST'])
+def edit(name):
+    people = load_data()
+    person = next((p for p in people if p['name'] == name), None)
+    if not person:
+        return redirect(url_for('index'))
+
     if request.method == 'POST':
-        people = []
-        for i in range(len(request.form.getlist('name'))):
-            name = request.form.getlist('name')[i]
-            gender = request.form.getlist('gender')[i]
-            age_group = request.form.getlist('age_group')[i]
-            has_car = request.form.getlist('has_car')[i] == 'yes'
-            people.append(Person(name, gender, age_group, has_car))
+        person['gender'] = request.form['gender']
+        person['age'] = request.form['age']
+        person['car'] = 'car' in request.form
+        save_data(people)
+        return redirect(url_for('index'))
 
-        male = [p for p in people if p.gender == 'male']
-        female = [p for p in people if p.gender == 'female']
+    return render_template('edit.html', person=person)
 
-        male_pairs = group_and_pair(male)
-        female_pairs = group_and_pair(female)
-        teams = assign_teams(male_pairs, female_pairs)
-        teams = ensure_car_owners(teams)
+@app.route('/pair')
+def pair():
+    people = load_data()
+    male_group = [p for p in people if p['gender'] == 'male']
+    female_group = [p for p in people if p['gender'] == 'female']
 
-        return render_template('result.html', teams=teams)
+    male_teams = make_pairs(male_group)
+    female_teams = make_pairs(female_group)
 
-    return render_template('form.html')
+    return render_template('result.html', male_teams=male_teams, female_teams=female_teams)
 
 if __name__ == '__main__':
     app.run(debug=True)

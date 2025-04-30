@@ -1,0 +1,104 @@
+[
+  {
+    "name": "임재화",
+    "gender": "female",
+    "age": "old",
+    "car": false
+  },
+  {
+    "name": "지재만",
+    "gender": "male",
+    "age": "old",
+    "car": true
+  },
+  {
+    "name": "김윤길",
+    "gender": "male",
+    "age": "old",
+    "car": true
+  },
+  {
+    "name": "박민성",
+    "gender": "male",
+    "age": "young",
+    "car": false
+  },
+  {
+    "name": "최문수",
+    "gender": "male",
+    "age": "old",
+    "car": false
+  },
+  {
+    "name": "신태용",
+    "gender": "male",
+    "age": "old",
+    "car": true
+  },
+  {
+    "name": "김예지",
+    "gender": "female",
+    "age": "young",
+    "car": false
+  },
+  {
+    "name": "진갑선",
+    "gender": "female",
+    "age": "old",
+    "car": false
+  },
+  {
+    "name": "김송난",
+    "gender": "female",
+    "age": "old",
+    "car": false
+  },
+  {
+    "name": "양민수",
+    "gender": "male",
+    "age": "young",
+    "car": false
+  },
+  {
+    "name": "김혜숙",
+    "gender": "female",
+    "age": "old",
+    "car": false
+  },
+  {
+    "name": "지상미",
+    "gender": "female",
+    "age": "young",
+    "car": true
+  },
+  {
+    "name": "이효숙",
+    "gender": "female",
+    "age": "old",
+    "car": true
+  },
+  {
+    "name": "송순녀",
+    "gender": "female",
+    "age": "old",
+    "car": false
+  },
+  {
+    "name": "송영순",
+    "gender": "female",
+    "age": "old",
+    "car": false
+  },
+  {
+    "name": "이순임",
+    "gender": "female",
+    "age": "young",
+    "car": true
+  },
+  {
+    "name": "최세진",
+    "gender": "male",
+    "age": "young",
+    "car": true
+  }
+]
