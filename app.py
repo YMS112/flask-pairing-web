@@ -87,4 +87,4 @@ def pair():
     return render_template('result.html', male_teams=male_teams, female_teams=female_teams)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
