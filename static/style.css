@@ -1,0 +1,129 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 40px;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    margin-bottom: 40px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  select {
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type="checkbox"] {
+    margin-left: 5px;
+  }
+  
+  button,
+  input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  button:hover,
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+  
+  td button {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+  
+  td button.edit {
+    background-color: #e2e6ea;
+    color: #333;
+  }
+  
+  td button.delete {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  /* ✅ 모바일 화면에 맞게 조정하는 미디어 쿼리 */
+  @media (max-width: 768px) {
+    body {
+      margin: 20px;
+      font-size: 16px;
+    }
+  
+    input[type="text"],
+    select {
+      width: 100%;
+      font-size: 16px;
+    }
+  
+    table {
+      font-size: 14px;
+    }
+  
+    td button {
+      font-size: 13px;
+      padding: 6px 10px;
+    }
+  
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    form {
+      font-size: 14px;
+    }
+  
+    label {
+      font-size: 14px;
+    }
+  
+    button,
+    input[type="submit"] {
+      font-size: 14px;
+    }
+  }
+  
